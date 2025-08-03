@@ -4,6 +4,14 @@
   <span class="button-text-hover">contact me</span>
 </a>
 
+<a href="https://jity.super.site/contacts" class="button" role="button" target="_blank" rel="noopener noreferrer">
+  <span class="status-dot"></span>
+  <span class="button-text-wrapper">
+    <span class="button-text available">available</span>
+    <span class="button-text contact">contact me</span>
+  </span>
+</a>
+
 <link href="https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -11,8 +19,7 @@
   align-items: center;
   appearance: none;
   border-radius: 50px;
-  border-width: 2px;
-  border-color: #1FCA3E;
+  border: 2px solid #1FCA3E;
   box-shadow: rgba(76, 175, 80, 0.2) 0 2px 4px,
               rgba(76, 175, 80, 0.15) 0 7px 13px -3px,
               rgba(128, 128, 128, 0.2) 0 -3px 0 inset;
@@ -22,7 +29,7 @@
   display: inline-flex;
   font-family: "Victor Mono", monospace;
   height: 44px;
-  justify-content: center;
+  justify-content: flex-start;
   line-height: 1;
   list-style: none;
   overflow: hidden;
@@ -31,7 +38,6 @@
   position: relative;
   text-align: center;
   text-decoration: none;
-  transition: box-shadow 0.15s, transform 0.15s;
   user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
@@ -39,8 +45,8 @@
   font-size: 16px;
   font-weight: 600;
   gap: 12px;
-  border-style: solid;
-  text-decoration: none;
+  width: 160px;
+  transition: box-shadow 0.15s, transform 0.15s;
 }
 
 .status-dot {
@@ -49,33 +55,79 @@
   background-color: #1FCA3E;
   border-radius: 50%;
   animation: pulse 1.5s infinite ease-in-out;
-  transition: opacity 0.3s ease;
+  flex-shrink: 0;
 }
 
-.button-text,
-.button-text-hover {
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.8;
+  }
+}
+
+.button-text-wrapper {
+  position: relative;
   display: inline-block;
-  vertical-align: middle;
-  transition: opacity 0.3s ease;
-  user-select: none;
+  width: 100px;
+  height: 20px;
+  overflow: hidden;
 }
 
-.button-text-hover {
-  display: none;
-  color: #1BAF35;
+.button-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
+/* Текстовые анимации медленнее */
+.available {
+  animation: fadeInOut 3s infinite ease-in-out;
+}
+
+.contact {
+  animation: fadeInOut 3s infinite ease-in-out;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Hover — показываем только contact me */
 .button:hover .status-dot {
   opacity: 0;
   animation-play-state: paused;
 }
 
-.button:hover .button-text {
-  display: none;
+.button:hover .available,
+.button:hover .contact {
+  animation: none !important;
+  opacity: 0 !important;
 }
 
-.button:hover .button-text-hover {
-  display: inline-block;
+.button:hover .contact {
+  opacity: 1 !important;
 }
 
 .button:hover {
@@ -88,16 +140,5 @@
 .button:active {
   box-shadow: rgba(128, 128, 128, 0.2) 0 3px 7px inset;
   transform: translateY(2px);
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.4);
-    opacity: 0.8;
-  }
 }
 </style>
