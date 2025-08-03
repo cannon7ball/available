@@ -1,0 +1,103 @@
+<a href="https://your-contact-link.example" class="button" role="button">
+  <span class="status-dot"></span>
+  <span class="button-text">available</span>
+  <span class="button-text-hover">contact me</span>
+</a>
+
+<link href="https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+.button {
+  align-items: center;
+  appearance: none;
+  border-radius: 50px;
+  border-width: 2px;
+  border-color: #1FCA3E;
+  box-shadow: rgba(76, 175, 80, 0.2) 0 2px 4px,
+              rgba(76, 175, 80, 0.15) 0 7px 13px -3px,
+              #D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #1BAF35;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Victor Mono", monospace;
+  height: 44px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 18px;
+  padding-right: 18px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 16px;
+  font-weight: 600;
+  gap: 12px;
+  border-style: solid;
+  text-decoration: none;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #1FCA3E;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite ease-in-out;
+  transition: opacity 0.3s ease;
+}
+
+.button-text,
+.button-text-hover {
+  display: inline-block;
+  vertical-align: middle;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+.button-text-hover {
+  display: none;
+  color: #1BAF35;
+}
+
+.button:hover .status-dot {
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.button:hover .button-text {
+  display: none;
+}
+
+.button:hover .button-text-hover {
+  display: inline-block;
+}
+
+.button:hover {
+  box-shadow: rgba(76, 175, 80, 0.3) 0 4px 8px,
+              rgba(76, 175, 80, 0.2) 0 7px 13px -3px,
+              #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.8;
+  }
+}
+</style>
